@@ -1,34 +1,27 @@
-using System;
 using System.Collections.Generic;
 using _ROOT.Menu.Scripts_Menu.RaceSelection.RaceCard;
-using _ROOT.RaceLogic;
+using _ROOT.RaceLogic.Race;
+using _ROOT.UI.PatternBases.MVP;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _ROOT.Menu.Scripts_Menu.RaceSelection
+namespace _ROOT.UI.Menu.Scripts_Menu.RaceSelection.View
 {
-    public class RaceSelectionView : MonoBehaviour
+    public class RaceListView : MonoBehaviour, IBaseView<RaceData[]>
     {
         [SerializeField] private RaceCardView raceCardPrefab;
         [SerializeField] private ToggleGroup cardRoot;
-        [SerializeField] private Button startButton;
 
         private RaceSelectionPresenter _presenter;
         private List<RaceCardView> _instances;
 
-        private void Awake() => 
-            startButton.onClick.AddListener(OnCompleteSelection);
-
         public void Initialize(RaceSelectionPresenter presenter) => 
             _presenter = presenter;
 
-        private void OnDestroy()
-        {
-            startButton.onClick.RemoveListener(OnCompleteSelection);
+        private void OnDestroy() => 
             Clear();
-        }
-
-        public void AssignCards(RaceData[] data)
+        
+        public void UpdateView(RaceData[] data)
         {
             Clear();
             _instances = new List<RaceCardView>(data.Length);
@@ -41,6 +34,8 @@ namespace _ROOT.Menu.Scripts_Menu.RaceSelection
                 
                 _instances.Add(instance);
             }
+
+            OnToggleSelected(_instances[0]);
         }
 
         private void OnToggleSelected(RaceCardView selectedCard)
@@ -49,11 +44,10 @@ namespace _ROOT.Menu.Scripts_Menu.RaceSelection
             _presenter.OnUserSelectCard(cardIndex);
         }
 
-        private void OnCompleteSelection() => 
-            _presenter.OnCompleteSelection();
-
         private void Clear()
         {
+            if(_instances == null) return;
+            
             foreach (var instance in _instances)
             {
                 instance.OnSelected -= OnToggleSelected;
