@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24ddf88bb1b44bab0b60259ec3ea3a2, type: 3}
   m_Name: RaceData_TestRally
   m_EditorClassIdentifier: 
-  _raceType: 1
-  _locationData: {fileID: 11400000, guid: 476182404b4070a4bb31c5192a96d0e4, type: 2}
+  title: Test rally championship
+  sprite: {fileID: 21300000, guid: e7718fec7291a2340bc0f698361fd053, type: 3}
+  raceType: 1
+  locationData: {fileID: 11400000, guid: 476182404b4070a4bb31c5192a96d0e4, type: 2}

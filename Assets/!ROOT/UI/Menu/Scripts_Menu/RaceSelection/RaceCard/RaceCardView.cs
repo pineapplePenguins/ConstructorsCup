@@ -1,5 +1,5 @@
 using System;
-using _ROOT.RaceLogic;
+using _ROOT.RaceLogic.Race;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,7 +32,7 @@ namespace _ROOT.Menu.Scripts_Menu.RaceSelection.RaceCard
 
         public void LoadData(RaceData data)
         {
-            cardName.text = data.RaceName;
+            cardName.text = data.Title;
         }
     }
 }
