@@ -10,7 +10,6 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-/.idea/
 *.log
 
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be commited to version control.
@@ -31,6 +30,12 @@
 /[Aa]ssets/Plugins/Editor/JetBrains*
 # Jetbrains Rider personal-layer settings
 *.DotSettings.user
+
+# JetBrains Rider/IntelliJ IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
 
 # Visual Studio cache directory
 .vs/
